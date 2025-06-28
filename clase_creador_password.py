@@ -31,7 +31,6 @@ class Creador_password():
         self.password = ""
         self.devolver_password = False
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Convertir posicion de pantalla lcd a la de la tabla de conversion.
     def conversion_posicion(self, pos):
@@ -45,7 +44,6 @@ class Creador_password():
             posicion = posicion - 24
 
         return posicion
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Busca un caracter en la tabla de conversion y lo incorpora en
@@ -76,13 +74,11 @@ class Creador_password():
             else:
                 self.password = self.password + caracter
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Elimina el password.
     def borrar_password(self):
         self.password = ""
         self.devolver_password = False
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Envia la contraseña.

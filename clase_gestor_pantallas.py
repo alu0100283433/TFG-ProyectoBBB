@@ -1,16 +1,20 @@
 
-# Nombre: clase_gestor_pantallas.py |-> Nos quedamos con esta version. Limpiar
-
-#   Clase que gestiona todas las pantallas (objetos de esa clase).
-# Carga las mismas y se encarga de rotar las pantallas cuando se
-# eligen las opciones necesarias.
-
+# ******************************************************************************
+# Nombre: clase_gestor_pantallas.py
+#
+#   Descripcion: 
+#
+#       * Clase que gestiona todas las pantallas (objetos de esa clase). 
+# Carga las mismas y se encarga de rotar las pantallas cuando se eligen
+# las opciones necesarias.
+#
 # - Codigos de los cursores:
 #
 #   5000 = Pantalla no interactuable con cursores.
 #   6000 = Otro tipo de pantalla no interactuable.
 #   2000 = No tiene restricciones, se puede mover por toda la pantalla.
 #   1000 = Posicion (linea del lcd) no permitida en la pantalla.
+# ******************************************************************************
 
 import pdb
 import copy
@@ -19,6 +23,7 @@ import creador_pantallas_ips
 import clase_json_a_pantallas
 
 
+#.....................
 class Gestor_pantallas:
 
     RANGO_LINEA1 = range(00,20) # Rango de cursores usables en pantalla lcd.
@@ -29,7 +34,8 @@ class Gestor_pantallas:
     RANGO_LINEAS = (RANGO_LINEA1, RANGO_LINEA2, RANGO_LINEA3, RANGO_LINEA4)
 
 
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Constructor
     def __init__ (self):
 
         self.lista_pantallas = []
@@ -43,25 +49,20 @@ class Gestor_pantallas:
 
         self.pantalla_actual   = self.lista_pantallas[0] # Copia ref.
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_c_pantalla_actual(self, cpa):
         self.pantalla_actual.set_codigo(cpa)
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_c_pantalla_actual(self):
         return self.pantalla_actual.get_codigo
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def mostrar_pantallas(self):
         for p in self.lista_pantallas:
             p.mostrar_pantalla_texto()
-            print("")
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_indice_pantalla_actual(self):
         cpa = self.pantalla_actual.get_codigo()
 
@@ -75,44 +76,36 @@ class Gestor_pantallas:
 
         return indice
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_indice_codigo_pantalla(self, codigo):
-
 
         indice = -1 
 
         for pantalla in self.lista_pantallas:
             indice = indice + 1
 
-            #if codigo == list(pantalla.get_codigo()): # Ordenar para comparar.
             if codigo == pantalla.get_codigo(): # Ordenar para comparar.
                 break
 
-
         return indice
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_actual(self, pantalla_nueva):
         indice = self.get_indice_pantalla_actual()
 
         self.lista_pantallas[indice] = pantalla_nueva
         self.pantalla_actual = pantalla_nueva
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_actual(self):
         return self.pantalla_actual 
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def mostrar_pantalla_actual(self):
         self.pantalla_actual.mostrar_pantalla_texto()
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Mover una pos. arriba en pantallas tipo lista.
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_arriba_lista(self):
         cambiar_de_pantalla = False
 
@@ -125,7 +118,7 @@ class Gestor_pantallas:
         continuar = True
 
         #   Como se supone que es una pos valida, vamos a ver en
-        # que linea esta.
+        # que linea está.
         lista_pos_validas = pantalla_aux.get_pos_validas()
 
         l_cursor_actual = 0
@@ -139,8 +132,7 @@ class Gestor_pantallas:
 
         while continuar == True:
 
-            #   Si es la 1 linea de la pantalla. Pasar a la anterior y a la
-            # linea 4
+            #   Si es linea 1 de la pantalla. Pasar a la anterior y a la 4
             if l_cursor_actual == 0:
                 self.mover_anterior_pantalla()
 
@@ -177,16 +169,13 @@ class Gestor_pantallas:
 
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Mover una pos. arriba en pantallas tipo teclado.
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_arriba_teclado(self):
         cambiar_de_pantalla = False
 
         pantalla_aux = self.get_pantalla_actual()
-        #tipo_aux     = pantalla_aux.get_tipo()
         cursor_aux   = pantalla_aux.get_pos_actual_cursor()
-
 
         continuar = True
 
@@ -201,23 +190,15 @@ class Gestor_pantallas:
                 else:
                     l_cursor_actual = l_cursor_actual + 1
 
-            print("-> ", l_cursor_actual, "<-")
-
-            #breakpoint()
-
             # Segun linea actual mover a linea anterior 
-            #if linea == 0:
             if l_cursor_actual == 0:
                 self.mover_anterior_pantalla()
                 cursor_aux = cursor_aux + 84
                 cambiar_de_pantalla = True
-            #elif linea == 1:
             elif l_cursor_actual == 1:
                 cursor_aux = cursor_aux - 64
-            #elif linea == 2:
             elif l_cursor_actual == 2:
                 cursor_aux = cursor_aux + 44
-            #elif linea == 3:
             elif l_cursor_actual == 3:
                 cursor_aux = cursor_aux - 64
 
@@ -225,10 +206,9 @@ class Gestor_pantallas:
             self.pantalla_actual.set_pos_actual_cursor(cursor_aux)
 
             # Obtener la lista de cursores por linea validos en
-            # la nueva linea. Porque si en la nueva linea su valor
-            # es 1000 es que no es una posicion valida y hay que
-            # volver a moverse una linea hacia arriba (o pantalla
-            # anterior).
+            # la nueva linea. Si la nueva linea es 1000, no es
+            # una pos. valida, moverse una linea arriba/pantalla
+            # anterior.
 
             l_cursor_actual = 0
 
@@ -240,17 +220,13 @@ class Gestor_pantallas:
 
             aux_pos_lineas = self.pantalla_actual.get_pos_validas()
 
-            #breakpoint()
-
             if aux_pos_lineas[l_cursor_actual] != 1000:
                 continuar = False
 
-
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Gestor de movimiento una pos. de cursor arriba segun tipo de pantalla
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_arriba(self): 
         cambiar_de_pantalla = False
 
@@ -260,22 +236,17 @@ class Gestor_pantallas:
 
         # Operacion por tipos de pantalla
         if   tipo_aux == "Lista":
-            print("Lista")
             cambiar_de_pantalla = self.mover_cursor_uno_arriba_lista() 
         elif tipo_aux == "Pantalla":
-            print("Pantalla")
             self.mover_anterior_pantalla()
             cambiar_de_pantalla = True
         elif tipo_aux == "Teclado" or tipo_aux == "Password":
-            print("Teclado")
             cambiar_de_pantalla = self.mover_cursor_uno_arriba_teclado()
 
-        #breakpoint()
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Mover una pos. abajo en pantallas tipo teclado.
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_abajo_lista(self):
         cambiar_de_pantalla = False
 
@@ -287,8 +258,7 @@ class Gestor_pantallas:
         # todo hasta encontrar la primera posicion valida.
         continuar = True
 
-        #   Como se supone que es una pos valida, vamos a ver en
-        # que linea esta.
+        #   Suponemos pos. válida. Vemos en que línea está.
         lista_pos_validas = pantalla_aux.get_pos_validas()
 
         l_cursor_actual = 0
@@ -299,11 +269,9 @@ class Gestor_pantallas:
             else:
                 l_cursor_actual = l_cursor_actual + 1
 
-
         while continuar == True:
 
-            #   Si es la 4 linea de la pantalla. Pasar a la siguiente y a la
-            # linea 1
+            #   Si es linea 4 de la pantalla. Pasar a la siguiente y a linea 1
             if l_cursor_actual == 3:
                 self.mover_siguiente_pantalla()
 
@@ -334,22 +302,18 @@ class Gestor_pantallas:
             if l_cursor_actual == 4:
                 l_cursor_actual = 0
 
-
             if cursor_aux != 1000: # Si hay pos. viable, terminar.
                 continuar = False
 
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Mover una pos. abajo en pantallas tipo teclado.
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_abajo_teclado(self):
         cambiar_de_pantalla = False
 
         pantalla_aux = self.get_pantalla_actual()
-        #tipo_aux     = pantalla_aux.get_tipo()
         cursor_aux   = pantalla_aux.get_pos_actual_cursor()
-
 
         continuar = True
 
@@ -364,27 +328,18 @@ class Gestor_pantallas:
                 else:
                     l_cursor_actual = l_cursor_actual + 1
 
-            print("-> ", l_cursor_actual, "<-")
 
-            #breakpoint()
-
-            # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             # Segun linea actual mover a linea siguiente
-            #if linea == 0:
             if l_cursor_actual == 0:
                 cursor_aux = cursor_aux + 64
-            #elif linea == 1:
             elif l_cursor_actual == 1:
                 cursor_aux = cursor_aux - 44
-            #elif linea == 2:
             elif l_cursor_actual == 2:
                 cursor_aux = cursor_aux + 64
-            #elif linea == 3:
             elif l_cursor_actual == 3:
                 self.mover_siguiente_pantalla()
                 cursor_aux = cursor_aux - 84
                 cambiar_de_pantalla = True
-            # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             # Ajustar el cursor. Mover cursor a nueva pos.
             self.pantalla_actual.set_pos_actual_cursor(cursor_aux)
@@ -405,18 +360,13 @@ class Gestor_pantallas:
 
             aux_pos_lineas = self.pantalla_actual.get_pos_validas()
 
-            #breakpoint()
-
             if aux_pos_lineas[l_cursor_actual] != 1000:
                 continuar = False
 
-
-
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Gestor de movimiento una posicion abajo segun el tipo de pantalla
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_abajo(self):
         cambiar_de_pantalla = False
 
@@ -426,21 +376,17 @@ class Gestor_pantallas:
 
         # Operacion por tipos de pantallas
         if tipo_aux == "Lista":
-            print("Lista")
             cambiar_de_pantalla = self.mover_cursor_uno_abajo_lista()
         elif tipo_aux == "Pantalla":
-            print("Pantalla")
             self.mover_siguiente_pantalla()
             cambiar_de_pantalla = True
         elif tipo_aux == "Teclado" or tipo_aux == "Password":
-            print("Teclado")
             cambiar_de_pantalla = self.mover_cursor_uno_abajo_teclado()
 
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Mover una pos. izquierda en pantallas tipo teclado
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_izquierda(self):
         cambiar_de_pantalla = False
 
@@ -448,18 +394,13 @@ class Gestor_pantallas:
         tipo_aux     = pantalla_aux.get_tipo()
         cursor_aux   = pantalla_aux.get_pos_actual_cursor()
 
-        #breakpoint()
-
         if tipo_aux != "Teclado" and tipo_aux != "Password":
             return cambiar_de_pantalla
-
-        print("Teclado")
 
         continuar = True
 
         # Bucle. Una posicion izquierda cada vez
         while continuar == True:
-        # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
             # Obtener linea del cursor actual
             l_cursor_actual = 0
 
@@ -468,9 +409,6 @@ class Gestor_pantallas:
                     break
                 else:
                     l_cursor_actual = l_cursor_actual + 1
-
-            print("-> ", l_cursor_actual, "<-")
-
 
             # Segun linea actual mover una pos. izquierda 
             if   cursor_aux == 0:
@@ -488,9 +426,7 @@ class Gestor_pantallas:
 
             # Ajustar el cursor. Mover cursor a nueva pos.
             self.pantalla_actual.set_pos_actual_cursor(cursor_aux)
-            #breakpoint()
 
-            # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
             # Obtener la lista de cursores por linea validos en
             # la nueva linea. Porque si en la nueva linea su valor
             # es 1000 es que no es una posicion valida y hay que
@@ -507,18 +443,13 @@ class Gestor_pantallas:
 
             aux_pos_lineas = self.pantalla_actual.get_pos_validas()
 
-            #breakpoint()
-
             if aux_pos_lineas[l_cursor_actual] != 1000:
                 continuar = False
-            # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
-        # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
         return cambiar_de_pantalla
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Mover una pos. derecha en pantallas tipo teclado
-    # --------------------------------------------------------------------------
     def mover_cursor_uno_derecha(self):
         cambiar_de_pantalla = False
 
@@ -526,18 +457,13 @@ class Gestor_pantallas:
         tipo_aux     = pantalla_aux.get_tipo()
         cursor_aux   = pantalla_aux.get_pos_actual_cursor()
 
-        #breakpoint()
-
         if tipo_aux != "Teclado" and tipo_aux != "Password":
             return cambiar_de_pantalla
-
-        print("Teclado")
 
         continuar = True
 
         # Bucle. Una posicion derecha cada vez
         while continuar == True:
-        # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
             # Obtener linea del cursor actual
             l_cursor_actual = 0
 
@@ -546,9 +472,6 @@ class Gestor_pantallas:
                     break
                 else:
                     l_cursor_actual = l_cursor_actual + 1
-
-            print("-> ", l_cursor_actual, "<-")
-
 
             # Segun linea actual mover una pos. derecha 
             if   cursor_aux == 19:
@@ -566,9 +489,7 @@ class Gestor_pantallas:
 
             # Ajustar el cursor. Mover cursor a nueva pos.
             self.pantalla_actual.set_pos_actual_cursor(cursor_aux)
-            #breakpoint()
 
-            # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
             # Obtener la lista de cursores por linea validos en
             # la nueva linea. Porque si en la nueva linea su valor
             # es 1000 es que no es una posicion valida y hay que
@@ -585,44 +506,33 @@ class Gestor_pantallas:
 
             aux_pos_lineas = self.pantalla_actual.get_pos_validas()
 
-            #breakpoint()
-
             if aux_pos_lineas[l_cursor_actual] != 1000:
                 continuar = False
-            # vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
-        # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
         return cambiar_de_pantalla
 
-    # --------------------------------------------------------------------------
-    def mover_siguiente_pantalla(self): # Pantalla siguiente de la actual 
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Pantalla siguiente de la actual 
+    def mover_siguiente_pantalla(self): 
         codigo_sig = (self.pantalla_actual).get_pantalla_siguiente()
-
-        #breakpoint() #V
 
         indice = self.get_indice_codigo_pantalla(codigo_sig)
 
         self.pantalla_actual = self.lista_pantallas[indice]
-        #self.c_pantalla_actual = c_sig
 
-    # --------------------------------------------------------------------------
-    def mover_anterior_pantalla(self): # Pantalla anterior de la actual
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Pantalla anterior de la actual
+    def mover_anterior_pantalla(self): 
         codigo_ant = (self.pantalla_actual).get_pantalla_anterior()
-
-        #breakpoint() #V
 
         indice = self.get_indice_codigo_pantalla(codigo_ant)
 
         self.pantalla_actual = self.lista_pantallas[indice]
 
-        #tipo_p = self.pantalla_actual.get_tipo()
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Entrar a una pantalla de opcion
+    def entrar_subpantalla(self, opcion): 
 
-
-    # --------------------------------------------------------------------------
-    def entrar_subpantalla(self, opcion): # Entrar a una pantalla de opcion
-
-        #   NOTA: Como maximo suelen haber 3 opciones, pantallas a entrar
-        # desde la pantalla actual.
         if   opcion == 1:
             codigo_opcion = self.pantalla_actual.get_pantalla_opcion1()
         elif opcion == 2:
@@ -642,32 +552,23 @@ class Gestor_pantallas:
 
             self.pantalla_actual = self.lista_pantallas[indice]
 
-
-    # --------------------------------------------------------------------------
-    def salir_subpantalla(self):  # Salir de una pantalla de opcion
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Salir de una pantalla de opcion
+    def salir_subpantalla(self):  
         cna = self.pantalla_actual.get_pantalla_nivel_anterior()
-
-        #breakpoint() # V
 
         indice = self.get_indice_codigo_pantalla(cna)
 
         self.pantalla_actual = self.lista_pantallas[indice]
-        #breakpoint()
 
-
-    # --------------------------------------------------------------------------
-    def borrar_pantallas_ips(self): # Borrar las pantallas con datos IPs
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Borrar las pantallas con datos IPs
+    def borrar_pantallas_ips(self): 
         cifra1 = 3
         cifra2 = 1
 
-
-        print()
-        print("Antes borrar p. NumPan: ", len(self.lista_pantallas))
-        print()
-
         lp_aux = [] # Lista pantallas aux
 
-        #breakpoint()
         for p in self.lista_pantallas:
             cod = p.get_codigo()
 
@@ -676,41 +577,29 @@ class Gestor_pantallas:
 
         self.lista_pantallas = lp_aux
 
-        print()
-        print("Despues borrar p. NumPan: ", len(self.lista_pantallas))
-        print()
-
-
-    # --------------------------------------------------------------------------
-    def crear_pantallas_ips(self): # Crear (de nuevo o no) las pantallas IPs
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Crear (de nuevo o no) las pantallas IPs
+    def crear_pantallas_ips(self): 
         pantallas_ips = creador_pantallas_ips.Creador_pantallas_ips()
 
         lista_p_ips = pantallas_ips.get_objetos_pantalla()
 
         lista_p_ips_copia = lista_p_ips.copy()
 
-        #for p in lista_p_ips:
         for p in lista_p_ips_copia:
-            #self.lista_pantallas.append(p)
             aux = copy.deepcopy(p)
             self.lista_pantallas.append(aux)
 
         del pantallas_ips
 
-    # TODO TODO ~
-    # --------------------------------------------------------------------------
-    def borrar_pantallas_comandos(self): # Borrar pantallas con datos comandos 
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Borrar pantallas con datos comandos 
+    def borrar_pantallas_comandos(self): 
         cifra1 = 1
         cifra2 = 2
 
-
-        print()
-        print("Antes borrar p. NumPan: ", len(self.lista_pantallas))
-        print()
-
         lp_aux = [] # Lista pantallas aux
 
-        #breakpoint()
         for p in self.lista_pantallas:
             cod = p.get_codigo()
 
@@ -719,13 +608,9 @@ class Gestor_pantallas:
 
         self.lista_pantallas = lp_aux
 
-        print()
-        print("Despues borrar p. NumPan: ", len(self.lista_pantallas))
-        print()
-
-
-    # --------------------------------------------------------------------------
-    def crear_pantallas_comandos(self): # Crear pantallas comandos 
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Crear pantallas comandos 
+    def crear_pantallas_comandos(self): 
         j_a_p = clase_json_a_pantallas.Json_a_pantallas("comandos")
 
         lista_p_comandos = j_a_p.get_lista_pantallas()
@@ -750,230 +635,51 @@ class Gestor_pantallas:
                 a = posicion
                 s = posicion + 2
 
-
             nuevo_c_ant = (1,2,a)
             nuevo_c_sig = (1,2,s)
 
             lista_p_comandos_copia[posicion].set_pantalla_anterior(nuevo_c_ant)
             lista_p_comandos_copia[posicion].set_pantalla_siguiente(nuevo_c_sig)
 
-            #lista_p_comandos_copia[posicion].set_pantalla_opcion1([1,1,-2])
-            #lista_p_comandos_copia[posicion].set_pantalla_opcion2([1,1,-1])
-            #lista_p_comandos_copia[posicion].set_pantalla_opcion3([1,1,0])
-
             lista_p_comandos_copia[posicion].set_pantalla_opcion1([1,1,0])
             lista_p_comandos_copia[posicion].set_pantalla_opcion2([1,1,-1])
             lista_p_comandos_copia[posicion].set_pantalla_opcion3([1,1,-2])
             lista_p_comandos_copia[posicion].set_pantalla_opcion4([1,1,-3])
 
-        #breakpoint()
-
         for p in lista_p_comandos_copia:
             aux = copy.deepcopy(p)
             self.lista_pantallas.append(aux)
 
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pos_pantalla_actual(self):
         return (self.get_pantalla_actual()).get_pos_actual_cursor()
 
-    # --------------------------------------------------------------------------
-    def get_charlcd_pos_pantalla_actual(self): # Obtener codigo caracter lcd
-
-        #breakpoint()
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Obtener codigo caracter lcd
+    def get_charlcd_pos_pantalla_actual(self): 
 
         pos_act = self.get_pos_pantalla_actual()
 
         if   (pos_act in self.RANGO_LINEA1):
-
             linea1 = self.pantalla_actual.get_linea1_lcd()
 
             char_lcd = linea1[pos_act]
 
         elif (pos_act in self.RANGO_LINEA2):
-
             linea2 = self.pantalla_actual.get_linea2_lcd()
 
             char_lcd = linea2[pos_act - 64]
-            #char_lcd = linea2[pos_act - 44]
 
         elif (pos_act in self.RANGO_LINEA3):
-
             linea3 = self.pantalla_actual.get_linea3_lcd()
 
             char_lcd = linea3[pos_act - 20]
-            #char_lcd = linea3[pos_act + 20]
 
         elif (pos_act in self.RANGO_LINEA4):
-
             linea4 = self.pantalla_actual.get_linea4_lcd()
 
             char_lcd = linea4[pos_act - 84]
-            #char_lcd = linea4[pos_act - 24]
 
         return char_lcd
-
-
-"""
-gp4 = Gestor_pantallas()
-
-print()
-print(len(gp4.lista_pantallas))
-print()
-
-gp4.borrar_pantallas_ips()
-
-print()
-print(len(gp4.lista_pantallas))
-print()
-
-gp4.crear_pantallas_ips()
-
-print()
-print(len(gp4.lista_pantallas))
-print()
-
-gp4.borrar_pantallas_ips()
-
-print()
-print(len(gp4.lista_pantallas))
-print()
-
-#breakpoint()
-
-gp4.crear_pantallas_ips()
-
-print()
-print(len(gp4.lista_pantallas))
-print()
-
-#breakpoint()
-
-gp4.borrar_pantallas_ips()
-
-print()
-print(len(gp4.lista_pantallas))
-print()
-"""
-
-
-#   NOTA: Esto demuestra que hacer una copia de un objeto mantiene
-# la referencia, es decir, que si se modifica la copia tambien
-# se modifica el original.
-
-"""
-gp2 = Gestor_pantallas()
-print()
-print((gp2.get_pantalla_actual()).get_codigo())
-print()
-gp2.mostrar_pantalla_actual()
-gpa2 = gp2.get_pantalla_actual()
-gpa2.set_pos_actual_cursor(4500)
-print()
-gpa2 = gp2.get_pantalla_actual()
-print(gpa2.get_pos_actual_cursor())
-"""
-
-"""
-gp = Gestor_pantallas()
-
-
-print()
-
-# Ciclar pantallas principales?
-gp.mostrar_pantalla_actual()
-print()
-print((gp.get_pantalla_actual()).get_codigo())
-print()
-print(" *Cursor en pos.: ", gp.get_pantalla_actual().get_pos_actual_cursor())
-print()
-
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mover_cursor_uno_arriba()
-gp.mostrar_pantalla_actual()
-
-
-gp.entrar_subpantalla(2)
-print()
-gp.mostrar_pantalla_actual()
-print()
-print((gp.get_pantalla_actual()).get_codigo())
-print()
-
-
-gp.mover_siguiente_pantalla()
-print()
-gp.mostrar_pantalla_actual()
-print()
-print((gp.get_pantalla_actual()).get_codigo())
-print()
-
-
-gp.mover_siguiente_pantalla()
-print()
-gp.mostrar_pantalla_actual()
-print()
-print((gp.get_pantalla_actual()).get_codigo())
-print()
-
-
-gp.salir_subpantalla()
-print()
-gp.mostrar_pantalla_actual()
-print()
-print((gp.get_pantalla_actual()).get_codigo())
-print()
-
-gp.salir_subpantalla()
-print()
-gp.mostrar_pantalla_actual()
-print()
-print((gp.get_pantalla_actual()).get_codigo())
-print()
-"""
-
-"""
-gp3 = Gestor_pantallas()
-
-
-print()
-
-# Ciclar pantallas principales?
-gp3.mostrar_pantalla_actual()
-print()
-print((gp3.get_pantalla_actual()).get_codigo())
-print()
-print(" *Cursor en pos.: ", gp3.get_pantalla_actual().get_pos_actual_cursor())
-print()
-
-#input()
-gp3.mover_cursor_uno_arriba()
-#input()
-#gp3.mover_cursor_uno_abajo()
-"""
-
-# =======================================================
-
-#breakpoint()
-
+#.....................
 
