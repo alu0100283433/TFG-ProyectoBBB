@@ -1,0 +1,492 @@
+[
+	{
+		"codigo_p": [1,0,0],
+		"nombre_codigo": "P1_0_0",
+		"nombre_p": "Menu principal 1",
+		"siguiente_p": [2,0,0],
+		"anterior_p": [3,0,0],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [1000, 82, 38, 102],
+		"posicion_cursor_actual": 82,
+
+		"tipo": "Lista",
+
+		"linea1": "  MENU PAL (xx/yy)  ",
+		"linea2": " * TECLADO        <- ",
+		"linea3": " * COMANDOS       <- ",
+		"linea4": " * CREAR PASSWORD <- ",
+
+		"opcion1_p": [1,1,1],
+		"opcion2_p": [1,2,1],
+		"opcion3_p": [1,3,1],
+		"opcion4_p": [1,0,0]
+	},
+
+	{
+		"codigo_p": [2,0,0],
+		"nombre_codigo": "P2_0_0",
+		"nombre_p": "Menu principal 2",
+		"siguiente_p": [3,0,0],
+		"anterior_p": [1,0,0],
+		"nivel_anterior_p": [2,0,0],
+
+		"posiciones_validas": [1000, 82, 38, 102],
+		"posicion_cursor_actual": 82,
+
+		"tipo": "Lista",
+
+		"linea1": "  MENU PAL (xx/yy)  ",
+		"linea2": " * USAR PASSWORD  <- ",
+		"linea3": " * ACTIVAR KB     <- ",
+		"linea4": " * DESACTIVAR KB  <- ",
+
+		"opcion1_p": [2,1,0],
+		"opcion2_p": [2,2,1],
+		"opcion3_p": [2,3,1],
+		"opcion4_p": [2,1,-1]
+	},
+
+	{
+		"codigo_p": [3,0,0],
+		"nombre_codigo": "P3_0_0",
+		"nombre_p": "Menu principal 3",
+		"siguiente_p": [1,0,0],
+		"anterior_p": [2,0,0],
+		"nivel_anterior_p": [3,0,0],
+
+		"posiciones_validas": [1000, 82, 38, 102],
+		"posicion_cursor_actual": 38,
+
+		"tipo": "Lista",
+
+		"linea1": "  MENU PAL (xx/yy)  ",
+		"linea2": " * IPS ACCESO BB  <- ",
+		"linea3": " * REINICIAR BB   <- ",
+		"linea4": " * APAGAR BB      <- ",
+
+		"opcion1_p": [3,1,2],
+		"opcion2_p": [3,2,1],
+		"opcion3_p": [3,3,1],
+		"opcion4_p": [3,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,1],
+		"nombre_codigo": "P1_1_1",
+		"nombre_p": "Teclado 1-1",
+		"siguiente_p": [1,1,2],
+		"anterior_p": [1,1,2],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [2000, 2000, 2000, 2000],
+		"posicion_cursor_actual": 0,
+
+		"tipo": "Teclado",
+
+		"linea1": "abcdefghijklmnhnopqrs",
+		"linea2": "tuvwxyzABCDEFGHIJKLM",
+		"linea3": "NhnOPQRSTUVWXYZ 01234",
+		"linea4": "56789!\"#$%&'()*+,-./",
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [1,1,-1],
+		"opcion3_p": [1,1,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,2],
+		"nombre_codigo": "P1_1_2",
+		"nombre_p": "Teclado 1-2",
+		"siguiente_p": [1,1,1],
+		"anterior_p": [1,1,1],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [2000, 2000, 2000, 2000],
+		"posicion_cursor_actual": 0,
+
+		"tipo": "Teclado",
+
+		"linea1": ":;<=>?@[]^_{|}-><-bl   ",
+		"linea2": "                    ",
+		"linea3": "                    ",
+		"linea4": "                    ", 
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [1,1,-1],
+		"opcion3_p": [1,1,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,0],
+		"nombre_codigo": "P1_1_0",
+		"nombre_p": "Teclado 1-0",
+		"siguiente_p": [1,1,0],
+		"anterior_p": [1,1,0],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "                    ",
+		"linea2": " ERROR DE ESCRITURA ",
+		"linea3": "                    ", 
+		"linea4": " ACTIVAR KB PRIMERO ", 
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [2,1,0],
+		"nombre_codigo": "P2_1_0",
+		"nombre_p": "Password error kb",
+		"siguiente_p": [2,1,0],
+		"anterior_p": [2,1,0],
+		"nivel_anterior_p": [2,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "                    ",
+		"linea2": " ERROR DE ESCRITURA ",
+		"linea3": "                    ", 
+		"linea4": " ACTIVAR KB PRIMERO ", 
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,-1],
+		"nombre_codigo": "P1_1_-1",
+		"nombre_p": "Teclado 1--1",
+		"siguiente_p": [1,1,-1],
+		"anterior_p": [1,1,-1],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": " ERROR DE ESCRITURA ",
+		"linea2": "                    ",
+		"linea3": "     CABLE USB      ", 
+		"linea4": "   DESCONECTADO     ", 
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [2,1,-1],
+		"nombre_codigo": "P2_1_-1",
+		"nombre_p": "Password error usb",
+		"siguiente_p": [2,1,-1],
+		"anterior_p": [2,1,-1],
+		"nivel_anterior_p": [2,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": " ERROR DE ESCRITURA ",
+		"linea2": "                    ",
+		"linea3": "     CABLE USB      ", 
+		"linea4": "   DESCONECTADO     ", 
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,-2],
+		"nombre_codigo": "P1_1_-2",
+		"nombre_p": "Comando en ejecucion",
+		"siguiente_p": [1,1,-3],
+		"anterior_p": [1,1,-3],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": " EJECUTANDO COMANDO ",
+		"linea2": "                    ",
+		"linea3": " ESPERE UN MOMENTO  ", 
+		"linea4": "                    ", 
+
+		"opcion1_p": [1,1,0],
+		"opcion2_p": [1,1,-1],
+		"opcion3_p": [1,1,-3],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,-3],
+		"nombre_codigo": "P1_1_-3",
+		"nombre_p": "Comando ejecutado",
+		"siguiente_p": [1,1,-3],
+		"anterior_p": [1,1,-3],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": " COMANDO EJECUTADO  ",
+		"linea2": "                    ",
+		"linea3": "   Volviendo a la   ",
+		"linea4": "pantalla de comandos",
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,1,-4],
+		"nombre_codigo": "P1_1_-4",
+		"nombre_p": "Password almacenado",
+		"siguiente_p": [1,1,-4],
+		"anterior_p": [1,1,-4],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "PASSWORD ALMACENADO ",
+		"linea2": "                    ",
+		"linea3": "   Pulse el boton   ",
+		"linea4": "cancelar para salir ",
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,3,1],
+		"nombre_codigo": "P1_3_1",
+		"nombre_p": "Login1-1",
+		"siguiente_p": [1,3,2],
+		"anterior_p": [1,3,3],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [1000, 1000, 2000, 2000],
+		"posicion_cursor_actual": 20,
+
+		"tipo": "Login",
+
+		"linea1": " CREACION PASSWORD  ",
+		"linea2": "--------------------",
+		"linea3": "abcdefghijklmnhnopqrs",
+		"linea4": "tuvwxyzABCDEFGHIJK-><-",
+
+
+		"opcion1_p": [1,1,-4],
+		"opcion2_p": [1,1,-1],
+		"opcion3_p": [1,1,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,3,2],
+		"nombre_codigo": "P1_3_2",
+		"nombre_p": "Login1-2",
+		"siguiente_p": [1,3,3],
+		"anterior_p": [1,3,1],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [1000, 1000, 2000, 2000],
+		"posicion_cursor_actual": 20,
+
+		"tipo": "Login",
+
+		"linea1": " CREACION PASSWORD  ",
+		"linea2": "--------------------",
+		"linea3": "LMNhnOPQRSTUVWXYZ 012",
+		"linea4": "3456789!\"#$%&'()*+-><-",
+
+
+		"opcion1_p": [1,1,-4],
+		"opcion2_p": [1,1,-1],
+		"opcion3_p": [1,1,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,3,3],
+		"nombre_codigo": "P1_3_3",
+		"nombre_p": "Login1-3",
+		"siguiente_p": [1,3,1],
+		"anterior_p": [1,3,2],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [1000, 1000, 2000, 2000],
+		"posicion_cursor_actual": 20,
+
+		"tipo": "Login",
+
+		"linea1": " CREACION PASSWORD  ",
+		"linea2": "--------------------",
+		"linea3": ",-./:;<=>?@[]^_{|}bl ",
+		"linea4": "                  -><-",
+
+
+		"opcion1_p": [1,1,-4],
+		"opcion2_p": [1,1,-1],
+		"opcion3_p": [1,1,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [2,2,1],
+		"nombre_codigo": "P2_2_1",
+		"nombre_p": "USB-gadget activando (1)",
+		"siguiente_p": [2,2,2],
+		"anterior_p": [2,2,2],
+		"nivel_anterior_p": [2,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "  CONFIGURANDO BBB  ",
+		"linea2": "    COMO TECLADO    ",
+		"linea3": "                    ",
+		"linea4": "     UN MOMENTO     ",
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [2,2,2],
+		"nombre_codigo": "P2_2_2",
+		"nombre_p": "USB-gadget activado (2)",
+		"siguiente_p": [2,2,2],
+		"anterior_p": [2,2,2],
+		"nivel_anterior_p": [2,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "  BBB CONFIGURADO   ",
+		"linea2": "   COMO TECLADO!    ",
+		"linea3": "   Pulse el boton   ",
+		"linea4": "cancelar para salir ",
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [2,3,1],
+		"nombre_codigo": "P2_3_1",
+		"nombre_p": "USB-gadget inactivo",
+		"siguiente_p": [2,3,1],
+		"anterior_p": [2,3,1],
+		"nivel_anterior_p": [2,0,0],
+
+		"posiciones_validas": [6000, 6000, 6000, 6000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "                    ",
+		"linea2": "GADGET USB INACTIVO!",
+		"linea3": "                    ",
+		"linea4": "                    ",
+
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [3,2,1],
+		"nombre_codigo": "P3_2_1",
+		"nombre_p": "Reinicio BB",
+		"siguiente_p": [3,2,1],
+		"anterior_p": [3,2,1],
+		"nivel_anterior_p": [3,0,0],
+
+		"posiciones_validas": [5000, 5000, 5000, 5000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "                    ",
+		"linea2": " REINICIANDO LA BB  ",
+		"linea3": "                    ",
+		"linea4": "                    ",
+	
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [3,3,1],
+		"nombre_codigo": "P3_3_1",
+		"nombre_p": "Apagado BB",
+		"siguiente_p": [3,2,1],
+		"anterior_p": [3,2,1],
+		"nivel_anterior_p": [3,0,0],
+
+		"posiciones_validas": [5000, 5000, 5000, 5000],
+		"posicion_cursor_actual": 103,
+
+		"tipo": "No operable",
+
+		"linea1": "                    ",
+		"linea2": "   APAGANDO LA BB   ",
+		"linea3": "                    ",
+		"linea4": "                    ",
+	
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	}
+]
+
+
+
+
+
+
+
