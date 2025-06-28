@@ -7,12 +7,14 @@
 
 # - Codigos para construir menus en el LCD.
 #
-#   * Clase que recibe los datos que conforman una pantalla para el
-# LCD y los transforma en datos que permiten escribirlos y mostrarlos
-# en el display LCD.
+#   * La clase Pantalla recibe los datos que conforman una pantalla en el LCD,
+# bien como ficheros JSON, bien como ficheros txt. Estos datos se transforman
+# en otros datos que permiten escribirlos y mostrarlos en el display LCD.
 #   * Tambien contiene codigos descriptores de las pantallas y de las
 # pantallas adyacentes, y datos de las posiciones en las que los
 # cursores pueden moverse en la pantalla.
+#   * Se establecerán códigos únicos para cada pantalla y a cuáles otras
+# pantallas se podrán transicionar desde ellas.
 # ******************************************************************************
 
 
@@ -22,10 +24,6 @@ import tablas_conversion
 
 
 
-#   Clase que almacenará y estructurará los datos de pantallas extraidos
-# de ficheros JSON o txt para que otras clases/ficheros Python puedan enviarlos 
-# y mostrarlos en el LCD. Se establecerán códigos únicos para cada pantalla
-# y a cuáles otras pantallas se podrán transicionar a partir de ésta.
 #.....................
 class Pantalla:
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
