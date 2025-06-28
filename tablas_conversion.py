@@ -333,8 +333,11 @@ CODIGO_KEY_CODE_COMANDOS2 = (
 
 #   Equivalencia codigo lcd <-> codigo Key_code teclado USB para la
 # pantalla de Login1.
+#   Equivalencia codigo lcd <-> codigo Key_code teclado USB para la
+# pantalla de Password/Contraseña.
 #......................
-CODIGO_LCD_KEY_CODE_LOGIN1 = (
+#CODIGO_LCD_KEY_CODE_LOGIN1 = (
+CODIGO_LCD_KEY_CODE_PSW1 = (
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
@@ -356,9 +359,10 @@ CODIGO_LCD_KEY_CODE_LOGIN1 = (
 #......................
 
 #   Equivalencia codigo lcd <-> codigo Key_code teclado USB para la
-# pantalla de Login2.
+# pantalla de Password/Contraseña2.
 #......................
-CODIGO_LCD_KEY_CODE_LOGIN2 = (
+#CODIGO_LCD_KEY_CODE_LOGIN2 = (
+CODIGO_LCD_KEY_CODE_PSW2 = (
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
@@ -381,8 +385,11 @@ CODIGO_LCD_KEY_CODE_LOGIN2 = (
 
 #   Equivalencia codigo lcd <-> codigo Key_code teclado USB para la
 # pantalla de Login3.
+#   Equivalencia codigo lcd <-> codigo Key_code teclado USB para la
+# pantalla de Password/Contraseña3.
 #......................
-CODIGO_LCD_KEY_CODE_LOGIN3 = (
+#CODIGO_LCD_KEY_CODE_LOGIN3 = (
+CODIGO_LCD_KEY_CODE_PSW3 = (
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
     K_SPACE,   K_SPACE,  K_SPACE,  K_SPACE,  K_SPACE, 
@@ -463,8 +470,12 @@ CODIGO_CAR_KEY_CODE2 = (
 #   Equivalencias de los caracteres de esta tabla con los Key_Code
 # de la tabla CODIGO_LCD_KEY_CODE_LOGIN1, representando la pantalla de
 # Login1. 
+#   Equivalencias de los caracteres de esta tabla con los Key_Code
+# de la tabla CODIGO_LCD_KEY_CODE_PSW1, representando la pantalla de
+# Password/Contraseña1. 
 #......................
-CODIGO_CAR_KEY_CODE_LOGIN1 = (
+#CODIGO_CAR_KEY_CODE_LOGIN1 = (
+CODIGO_CAR_KEY_CODE_PSW1 = (
     ' ',   ' ' ,  ' ',   ' ',   ' ',
     ' ',   ' ' ,  ' ',   ' ',   ' ',
     ' ',   ' ' ,  ' ',   ' ',   ' ',
@@ -489,8 +500,12 @@ CODIGO_CAR_KEY_CODE_LOGIN1 = (
 #   Equivalencias de los caracteres de esta tabla con los Key_Code
 # de la tabla CODIGO_LCD_KEY_CODE_LOGIN2, representando la pantalla de
 # Login2. 
+#   Equivalencias de los caracteres de esta tabla con los Key_Code
+# de la tabla CODIGO_LCD_KEY_CODE_PSW2, representando la pantalla de
+# Password/Contraseña2. 
 #......................
-CODIGO_CAR_KEY_CODE_LOGIN2 = (
+#CODIGO_CAR_KEY_CODE_LOGIN2 = (
+CODIGO_CAR_KEY_CODE_PSW2 = (
     ' ',   ' ' ,  ' ',   ' ',   ' ',
     ' ',   ' ' ,  ' ',   ' ',   ' ',
     ' ',   ' ' ,  ' ',   ' ',   ' ',
@@ -514,8 +529,12 @@ CODIGO_CAR_KEY_CODE_LOGIN2 = (
 #   Equivalencias de los caracteres de esta tabla con los Key_Code
 # de la tabla CODIGO_LCD_KEY_CODE_LOGIN2, representando la pantalla de
 # Login2. 
+#   Equivalencias de los caracteres de esta tabla con los Key_Code
+# de la tabla CODIGO_LCD_KEY_CODE_PSW3, representando la pantalla de
+# Password/Contraseña3. 
 #......................
-CODIGO_CAR_KEY_CODE_LOGIN3 = (
+#CODIGO_CAR_KEY_CODE_LOGIN3 = (
+CODIGO_CAR_KEY_CODE_PSW3 = (
     ' ',   ' ' ,  ' ',   ' ',   ' ',
     ' ',   ' ' ,  ' ',   ' ',   ' ',
     ' ',   ' ' ,  ' ',   ' ',   ' ',
