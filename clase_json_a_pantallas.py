@@ -10,12 +10,14 @@ import pdb
 import json
 
 import clase_pantalla
+import utilidades
 
 
 class Json_a_pantallas:
 
     # =========================================================================
-    RUTA_DIR_JSON = "/home/debian/ProyectoBBB/ficheros_json"
+    RUTA_DIR_JSON = utilidades.ejecuta_pwd() + '/ficheros_json/'
+
     RUTA_JSON = RUTA_DIR_JSON + "/pantallas.json"
     RUTA_COMANDOS_JSON = RUTA_DIR_JSON + "/pantallas_comandos.json"
     # =========================================================================

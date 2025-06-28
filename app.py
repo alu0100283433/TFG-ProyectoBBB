@@ -29,13 +29,16 @@ import clase_enviar_teclas
 import clase_creador_password
 import buzzers
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-RUTA_SHELL = '/home/debian/ProyectoBBB/shell_scripts/'
+import utilidades
+
+# ............................
+RUTA_SHELL = utilidades.ejecuta_pwd() + '/shell_scripts/'
+
 F_CONF_PINES    = RUTA_SHELL + 'conf_pines.sh'
 F_CREAR_GADGET  = RUTA_SHELL + 'crear_usb_gadget.sh' 
 F_BORRAR_GADGET = RUTA_SHELL + 'elimi_usb_gadget.sh' 
 F_HIDG0 = '/dev/hidg0'
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ............................
 
 # Password de superusuario para los comandos.
 pswd = "" # Intento de variable global

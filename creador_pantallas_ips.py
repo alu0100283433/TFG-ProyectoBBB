@@ -8,14 +8,17 @@ import pdb
 import subprocess
 
 import clase_pantalla
+import utilidades
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class Creador_pantallas_ips:
 
-    RUTA_SHELL = '/home/debian/ProyectoBBB/shell_scripts/'
+    RUTA_SHELL = utilidades.ejecuta_pwd() + '/shell_scripts/'
+
     F_LISTA_IPS = RUTA_SHELL + 'lista_ips.sh'
     F_IPS = RUTA_SHELL + 'ips_activas.txt'
+
 
     LINEA1_PANTALLA = ("  LISTA   IPs   X   ")
     #LINEA1_PANTALLA = "  LISTA   IPs   X   "

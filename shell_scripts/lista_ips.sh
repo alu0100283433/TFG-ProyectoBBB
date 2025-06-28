@@ -7,7 +7,8 @@
 # https://serverfault.com/questions/930142/display-only-the-network-interfaces-which-has-the-ip-address-using-ip-command#
 #
 
-PTH='/home/debian/ProyectoBBB/shell_scripts'
+PTH="$(pwd)"/shell_scripts
+
 
 # Comando dividido en 3 lineas
 ip -4 -brief address show up | \
