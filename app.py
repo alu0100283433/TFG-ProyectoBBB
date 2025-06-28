@@ -188,6 +188,14 @@ def ejecutar_accion(gp):
                     buzzers.sonar_S_buzzer3_3()
 
                 # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            elif cod_pantalla[0] == 1:
+                # Pantalla teclado
+                # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                print("Pantalla usar password")
+                gp.entrar_subpantalla(1)
+                pantalla = gp.get_pantalla_actual()
+                imprimir_menu_en_lcd(pantalla, True)
+                # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             #gp.entrar_subpantalla(1)
             #pantalla = gp.get_pantalla_actual()
