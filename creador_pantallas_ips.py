@@ -1,8 +1,12 @@
 
+# ******************************************************************************
 # Nombre: creador_pantallas_ips.py
-
-#   Generador de pantallas con listas de IPs activas en el dispositivo.
+#
+#   Descripcion: 
+#
+#       * Generador de pantallas con listas de IPs activas en el dispositivo.
 # Estas pantallas se formatearan para poder ser cargadas en el lcd.
+# ******************************************************************************
 
 import pdb
 import subprocess
@@ -11,18 +15,18 @@ import clase_pantalla
 import utilidades
 
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#.....................
 class Creador_pantallas_ips:
 
+    # =========================================================================
     RUTA_SHELL = utilidades.ejecuta_pwd() + '/shell_scripts/'
 
     F_LISTA_IPS = RUTA_SHELL + 'lista_ips.sh'
     F_IPS = RUTA_SHELL + 'ips_activas.txt'
+    # =========================================================================
 
 
     LINEA1_PANTALLA = ("  LISTA   IPs   X   ")
-    #LINEA1_PANTALLA = "  LISTA   IPs   X   "
-    
     CIFRA1_C = 3
     CIFRA2_C = 1
     cifra3_c = 1
@@ -33,16 +37,11 @@ class Creador_pantallas_ips:
     CURSOR_PANTALLA = 103
     TIPO = "Pantalla"
 
-    # 'Variables de clase' nos da problemas 
-    #lista_pantallas = []
-    #lista_objetos_pantalla = []
 
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Constructor
     def __init__(self):
-        #   Necesario. No se si se comporta como una eigenclass o por el
-        # estilo, pero cada nueva instancia de esta clase anhade el contenido
-        # ya insertado en estas estructuras de las instancias anteriores.
-        #   Mas o menos. Los atributos fuera de los metodos se comportan
+        #   NOTA: Los atributos fuera de los metodos se comportan
         # como variables/atributos de clase, compartidos con todas las
         # instancia creadas
         #   La creacion de variables con prefijo 'self' en el constructor
@@ -52,13 +51,9 @@ class Creador_pantallas_ips:
         self.lista_objetos_pantalla = []
 
         self.crear_lista_pantallas()
-
-        print("-> ", len(self.lista_pantallas), " <-")
-        #input()
-
         self.crear_objetos_pantalla()
 
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def crear_lista_pantallas(self):
         aux_pantalla = []
         numero_linea = 0
@@ -66,11 +61,8 @@ class Creador_pantallas_ips:
         
         repetir = True
 
-        #subprocess.run(['sh', '/home/debian/ProyectoBBB/lista_ips.sh'])
         subprocess.run(['sh', self.F_LISTA_IPS])
 
-        
-        #f_ips = open("/home/debian/ProyectoBBB/ips_activas.txt", 'r')
         f_ips = open(self.F_IPS, 'r')
         
         while repetir:
@@ -78,14 +70,14 @@ class Creador_pantallas_ips:
         
             if (l_lista_ips):
                 l_lista_ips = self.tratar_linea_ips(l_lista_ips)
-                #l_lista_ips = (l_lista_ips.rsplit("\n"))[0]
+
                 if numero_linea == 0:
                     l1 = self.LINEA1_PANTALLA.replace("X", str(numero_pantalla))
                     numero_pantalla = numero_pantalla + 1
                     aux_pantalla.append(l1)
                     numero_linea = numero_linea + 1
         
-                # Forzar anhadir espacios por la derecha hasta tam. 20
+                # Forzar añadir espacios por la derecha hasta tam. 20
                 aux_pantalla.append("{:<20}".format(l_lista_ips))
                 numero_linea = numero_linea + 1
         
@@ -108,18 +100,12 @@ class Creador_pantallas_ips:
                             aux_pantalla[3]
                             ))
 
-                    #breakpoint()
-
                     aux_pantalla = []
-
-                print(l_lista_ips)
             else:
-                #breakpoint()
 
                 num_lin = len(aux_pantalla)
 
                 if num_lin != 0:
-                    print("ping! pantalla incompleta!")
 
                     while num_lin < 4:
                         aux_pantalla.append("{:<20}".format(""))
@@ -141,14 +127,11 @@ class Creador_pantallas_ips:
                             aux_pantalla[3]
                             ))
 
-                #breakpoint()
                 repetir = False
         
         f_ips.close()
         
-        print(aux_pantalla)
-
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def tratar_linea_ips(self, linea):
         linea_tratada = linea.rsplit("\n")[0]
     
@@ -156,24 +139,15 @@ class Creador_pantallas_ips:
             dif = 20 - len(linea_tratada)
             linea_tratada + (" " * dif)
     
-        print(len(linea_tratada))
         return linea_tratada
 
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def crear_objetos_pantalla(self):
-
 
         cod_primer = (self.lista_pantallas[0])[0]  # Codigo pri pant.
         cod_ultimo = (self.lista_pantallas[-1])[0] # Codigo ult pant.
 
-        #breakpoint()
-        #for p in self.lista_objetos_pantalla:
         for p in self.lista_pantallas:
-
-            #breakpoint()
-
-# .......................................................
-# .......................................................
 
             cod_actual = p[0]  # Codigo pantalla actual.
 
@@ -210,8 +184,6 @@ class Creador_pantallas_ips:
                 else:                          # Ni primera ni ultima pantalla
                     pantalla.set_pantalla_siguiente(aux_sig)
                     pantalla.set_pantalla_anterior(aux_ant)
-# .......................................................
-# .......................................................
 
             pantalla.set_tipo(self.TIPO)
 
@@ -226,44 +198,9 @@ class Creador_pantallas_ips:
 
             self.lista_objetos_pantalla.append(pantalla)
 
-    # --------------------------------------------------------------------------
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_objetos_pantalla(self):
         lop = self.lista_objetos_pantalla
         return lop
+#.....................
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
-P2_1_2 = (
-        (2,1,2),
-        IPS_LINEA1,
-        IPS_LINEA2,
-        IPS_LINEA3,
-        IPS_LINEA4
-        )
-"""
-
-"""
-x = Creador_pantallas_ips()
-
-lop = x.get_objetos_pantalla()
-
-
-for ppp in lop:
-    print("-> ", ppp.get_codigo(), " <-")
-    ppp.mostrar_pantalla_texto()
-
-print(len(lop))
-
-del x
-
-x2 = Creador_pantallas_ips()
-
-lop = x2.get_objetos_pantalla()
-
-
-for ppp in lop:
-    print("-> ", ppp.get_codigo(), " <-")
-    ppp.mostrar_pantalla_texto()
-
-print(len(lop))
-"""
