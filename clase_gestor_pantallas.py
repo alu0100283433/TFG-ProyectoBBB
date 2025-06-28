@@ -266,7 +266,7 @@ class Gestor_pantallas:
             print("Pantalla")
             self.mover_anterior_pantalla()
             cambiar_de_pantalla = True
-        elif tipo_aux == "Teclado" or tipo_aux == "Login":
+        elif tipo_aux == "Teclado" or tipo_aux == "Password":
             print("Teclado")
             cambiar_de_pantalla = self.mover_cursor_uno_arriba_teclado()
 
@@ -432,7 +432,7 @@ class Gestor_pantallas:
             print("Pantalla")
             self.mover_siguiente_pantalla()
             cambiar_de_pantalla = True
-        elif tipo_aux == "Teclado" or tipo_aux == "Login":
+        elif tipo_aux == "Teclado" or tipo_aux == "Password":
             print("Teclado")
             cambiar_de_pantalla = self.mover_cursor_uno_abajo_teclado()
 
@@ -450,7 +450,7 @@ class Gestor_pantallas:
 
         #breakpoint()
 
-        if tipo_aux != "Teclado" and tipo_aux != "Login":
+        if tipo_aux != "Teclado" and tipo_aux != "Password":
             return cambiar_de_pantalla
 
         print("Teclado")
@@ -528,7 +528,7 @@ class Gestor_pantallas:
 
         #breakpoint()
 
-        if tipo_aux != "Teclado" and tipo_aux != "Login":
+        if tipo_aux != "Teclado" and tipo_aux != "Password":
             return cambiar_de_pantalla
 
         print("Teclado")
