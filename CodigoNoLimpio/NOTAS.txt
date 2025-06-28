@@ -1,0 +1,6 @@
+
+	Dentro de este directorio estará una copia exacta del código del
+proyecto, pero sin limpiar (mucho código comentado dejado por si acaso,
+comentarios, espacios excesivos, etc.)
+
+	El código es el mismo que el del directorio padre sólo que más sucio.
