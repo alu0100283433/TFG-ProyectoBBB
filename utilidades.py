@@ -1,10 +1,13 @@
 
 #!/usr/bin/python3
 
+# ******************************************************************************
 # Nombre: utilidades.py
 
 
 # Descripción: Agrupación de diversas funciones para su uso en la aplicación.
+
+# ******************************************************************************
 
 
 import subprocess
