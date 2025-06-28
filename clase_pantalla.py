@@ -1,14 +1,20 @@
 
+# ******************************************************************************
 # Nombre: clase_pantalla.py
 
-#   Clase que recibe los datos que conforman una pantalla para el
+
+# Descripción:
+
+# - Codigos para construir menus en el LCD.
+#
+#   * Clase que recibe los datos que conforman una pantalla para el
 # LCD y los transforma en datos que permiten escribirlos y mostrarlos
 # en el display LCD.
-#   Tambien contiene codigos descriptores de las pantallas y de las
+#   * Tambien contiene codigos descriptores de las pantallas y de las
 # pantallas adyacentes, y datos de las posiciones en las que los
 # cursores pueden moverse en la pantalla.
+# ******************************************************************************
 
-# Codigos para construir menus en el LCD.
 
 import pdb
 
@@ -16,11 +22,11 @@ import tablas_conversion
 
 
 
-#   Clase que usa un fichero o una constante con la forma que debe tener una
-# pantalla en el LCD y hace conversiones generando las lineas con los
-# caracteres que debe tener la pantalla y sus codigos equivalentes para que
-# el lcd los interprete y los inserte dentro suyo.
-# -----
+#   Clase que almacenará y estructurará los datos de pantallas extraidos
+# de ficheros JSON o txt para que otras clases/ficheros Python puedan enviarlos 
+# y mostrarlos en el LCD. Se establecerán códigos únicos para cada pantalla
+# y a cuáles otras pantallas se podrán transicionar a partir de ésta.
+#.....................
 class Pantalla:
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Constructor
@@ -28,7 +34,6 @@ class Pantalla:
 
 
         if (len(args) == 0): # Cuando extraemos de JSON
-
             self.codigo = (0,0,0)
 
             self.nombre_codigo = "P0_0_0"
@@ -55,12 +60,7 @@ class Pantalla:
 
             self.pos_actual_cursor = 0
 
-        else: # Cuando extraemos IPs
-        #elif (len(args) == 1) and \
-        #(isinstance(args[0], tuple)) and \
-        #(len(args[0]) == 5):
-
-
+        else: # Cuando extraemos IPs de un txt
             self.codigo = args[0][0]
 
             self.linea1 = args[0][1]
@@ -151,7 +151,8 @@ class Pantalla:
                 aux_lista2.append(aux_c1)
 
     
-        # Quedarse con los 20 primeros caracteres de la lista.
+        #   Quedarse con los 20 primeros caracteres de la lista, que es
+        # el tamaño máximo de caracteres en una línea del LCD.
         for c in aux_lista2: 
             lista_caracteres.append(c)
             contador = contador + 1
@@ -216,6 +217,7 @@ class Pantalla:
         codigo = self.codigo
 
         return codigo
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_nombre_codigo(self,nombre_codigo):
@@ -325,21 +327,11 @@ class Pantalla:
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    """
-    def set_cursores(self, cursores):
-        self.cursores = cursores
-    """
     def set_pos_validas(self, pos_validas):
         self.pos_validas = pos_validas 
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    """
-    def get_cursores(self):
-        cursores = self.cursores
-
-        return cursores
-    """
     def get_pos_validas(self):
         pos_validas = self.pos_validas
 
@@ -385,13 +377,16 @@ class Pantalla:
 
         return pac
 
+
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_tipo(self, tipo):
         self.tipo = tipo
 
+
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_tipo(self):
         return self.tipo
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea1(self):
@@ -441,7 +436,6 @@ class Pantalla:
             linea1 = linea1[0]
             
         self.linea1_ascii = self.conversor_texto_a_ascii(linea1)
-        #self.linea1_ascii = self.conversor_texto_a_ascii(self.linea1)
         self.linea1_lcd = self.conversor_ascii_a_lcd(self.linea1_ascii)
 
 
@@ -453,7 +447,6 @@ class Pantalla:
             linea2 = linea2[0]
 
         self.linea2_ascii = self.conversor_texto_a_ascii(linea2)
-        #self.linea2_ascii = self.conversor_texto_a_ascii(self.linea2)
         self.linea2_lcd = self.conversor_ascii_a_lcd(self.linea2_ascii)
 
 
@@ -465,7 +458,6 @@ class Pantalla:
             linea3 = linea3[0]
 
         self.linea3_ascii = self.conversor_texto_a_ascii(linea3)
-        #self.linea3_ascii = self.conversor_texto_a_ascii(self.linea3)
         self.linea3_lcd = self.conversor_ascii_a_lcd(self.linea3_ascii)
 
 
@@ -477,11 +469,16 @@ class Pantalla:
             linea4 = linea4[0]
 
         self.linea4_ascii = self.conversor_texto_a_ascii(linea4)
-        #self.linea4_ascii = self.conversor_texto_a_ascii(self.linea4)
         self.linea4_lcd = self.conversor_ascii_a_lcd(self.linea4_ascii)
+#.....................
+
 
 
 """
+
+********************************************************************************
+*                                    ANEXO.                                    *
+********************************************************************************
 
     Equivalencias caracter->unicode.
     --------------------------------

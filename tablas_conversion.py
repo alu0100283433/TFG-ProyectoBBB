@@ -1,6 +1,7 @@
 
 #!/usr/bin/python3
 
+# ******************************************************************************
 # Nombre: tablas_conversion.py
 
 
@@ -14,6 +15,7 @@
 #
 #       - Convertir el codigo de caracter del lcd a un Key_code para
 #       el teclado usb.
+# ******************************************************************************
 
 import pdb
 import time
@@ -548,7 +550,6 @@ CODIGO_CAR_KEY_CODE_LOGIN3 = (
     Equivalencias caracter->unicode del LCD.
     ----------------------------------------
 
-
     Espacio = 16
 
 
@@ -587,10 +588,7 @@ CODIGO_CAR_KEY_CODE_LOGIN3 = (
     i = 105     s = 115
     j = 106     t = 116
 
-"""
 
-
-"""
 
     Equivalencias caracter->key_code para los comandos.
     ---------------------------------------------------
@@ -614,31 +612,10 @@ CODIGO_CAR_KEY_CODE_LOGIN3 = (
     \) -> \ ->      \ -> 
     \| -> \ ->      \ -> 
 
-"""
 
-"""
-# Codigo [1,1,1]
-TECLADO1_LINEA1 = ("abcdefghijklmnhnopqrs")
-TECLADO1_LINEA2 = ("tuvwxyzABCDEFGHIJKLM")
-TECLADO1_LINEA3 = ("NhnOPQRSTUVWXYZ 01234")
-TECLADO1_LINEA4 = ("56789!\"#$%&'()*+,-./")
-
-
-
-# Codigo [1,1,2]
-TECLADO2_LINEA1 = (":;<=>?@[]^_{|}-><-bl ") 
-TECLADO2_LINEA2 = ("                    ") 
-TECLADO2_LINEA3 = ("                    ") 
-TECLADO2_LINEA4 = ("                   S") 
-"""
-
-
-"""
 
     Equivalencias caracter->key_code para los teclados.
     ---------------------------------------------------
-
-
 
     04 = \ 04 -> a|A      12 = \ 0c -> i|I      20 = \ 14 -> q|Q|@
     05 = \ 05 -> b|B      13 = \ 0d -> j|J      21 = \ 15 -> r|R
