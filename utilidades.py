@@ -4,7 +4,7 @@
 # Nombre: utilidades.py
 
 
-#   Descipción: Agrupación de diversas funciones para su uso en la aplicación.
+# Descripción: Agrupación de diversas funciones para su uso en la aplicación.
 
 
 import subprocess
