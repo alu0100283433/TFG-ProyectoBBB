@@ -16,11 +16,6 @@
 import pdb
 import time
 
-"""
-from tablas_conversion import CODIGO_CAR_KEY_CODE_LOGIN1, \
-                              CODIGO_CAR_KEY_CODE_LOGIN2, \
-                              CODIGO_CAR_KEY_CODE_LOGIN3
-"""
 
 from tablas_conversion import CODIGO_CAR_KEY_CODE_PSW1, \
                               CODIGO_CAR_KEY_CODE_PSW2, \
@@ -63,13 +58,10 @@ class Creador_password():
 
         if self.devolver_password == False:
             if   cod_pantalla == (1,3,1):
-                #caracter = CODIGO_CAR_KEY_CODE_LOGIN1[posicion]
                 caracter = CODIGO_CAR_KEY_CODE_PSW1[posicion]
             elif cod_pantalla == (1,3,2):
-                #caracter = CODIGO_CAR_KEY_CODE_LOGIN2[posicion]
                 caracter = CODIGO_CAR_KEY_CODE_PSW2[posicion]
             elif cod_pantalla == (1,3,3):
-                #caracter = CODIGO_CAR_KEY_CODE_LOGIN3[posicion]
                 caracter = CODIGO_CAR_KEY_CODE_PSW3[posicion]
 
             # Identificar si es ENTER o no.
