@@ -1,0 +1,114 @@
+[
+	{
+		"codigo_p": [1,2,1],
+		"nombre_codigo": "P1_2_1",
+		"nombre_p": "Comandos 1",
+		"siguiente_p": [1,2,0],
+		"anterior_p": [1,2,0],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [19, 83, 39, 103],
+		"posicion_cursor_actual": 19,
+
+		"tipo": "Lista",
+
+		"linea1": [
+			" Listar directorio  ",
+			"ls -alF€;"
+		],
+		"linea2": [
+			" Superusuario       ",
+			"sudo su€;"
+		],
+		"linea3": [
+			" Actualizar 1       ",
+			"sudo apt-get update€;"
+		],
+		"linea4": [
+			" Actualizar 2       ",
+			"sudo apt-get upgrade€;"
+		],
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,2,2],
+		"nombre_codigo": "P1_2_2",
+		"nombre_p": "Comandos 2",
+		"siguiente_p": [1,2,0],
+		"anterior_p": [1,2,0],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [19, 83, 39, 103],
+		"posicion_cursor_actual": 19,
+
+		"tipo": "Lista",
+
+		"linea1": [
+			" Limpiar pantalla   ",
+			"clear€;"
+		],
+		"linea2": [
+			" Ir a raiz y volver ",
+			"clear€;€<",
+			"cd /€;€<",
+			"pwd€;€<",
+			"ls -alF€;€<",
+			"cd /home/debian€;€<",
+			"pwd€;"
+		],
+		"linea3": [
+			" Mostrar red. activ.",
+			"ifconfig -a€;"
+		],
+		"linea4": [
+			"Nueva ventana term. ",
+			"€c€gt"
+		],
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	},
+
+	{
+		"codigo_p": [1,2,3],
+		"nombre_codigo": "P1_2_3",
+		"nombre_p": "Comandos 3",
+		"siguiente_p": [1,2,0],
+		"anterior_p": [1,2,0],
+		"nivel_anterior_p": [1,0,0],
+
+		"posiciones_validas": [19, 83, 39, 103],
+		"posicion_cursor_actual": 19,
+
+		"tipo": "Lista",
+
+		"linea1": [
+			" Ubuntu ventana home",
+			"€le"
+		],
+		"linea2": [
+			" Cambiar a term. 4  ",
+			"€c€g€q"
+		],
+		"linea3": [
+			" Cambiar a term. 2  ",
+			"€c€g€o"
+		],
+		"linea4": [
+			" Abrir Kate Ubuntu  ",
+			"€h€<kate€<€;€<€cn"
+		],
+
+		"opcion1_p": [0,0,0],
+		"opcion2_p": [0,0,0],
+		"opcion3_p": [0,0,0],
+		"opcion4_p": [0,0,0]
+	}
+]
