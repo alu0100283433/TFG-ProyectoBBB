@@ -9,7 +9,12 @@ import time
 import subprocess
 import Adafruit_BBIO.GPIO as GPIO
 
-RUTA_SCRIPTS_BUZZERS = '/home/debian/ProyectoBBB/shell_scripts/'
+import utilidades
+
+# ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+RUTA_SCRIPTS_BUZZERS = utilidades.ejecuta_pwd() + '/shell_scripts/'
+# ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
 F_BUZZER_APAGADO     = RUTA_SCRIPTS_BUZZERS + 'apagar_buzzer.sh'
 F_BUZZER_ENCENDIDO   = RUTA_SCRIPTS_BUZZERS +'encender_buzzer.sh'
 

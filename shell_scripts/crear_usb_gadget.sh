@@ -16,7 +16,8 @@
 sleep 1 
 
 PTH='/sys/kernel/config/usb_gadget/BB_como_teclado_usb'
-PTH_MRD='/home/debian/ProyectoBBB/shell_scripts/my_report_desc'
+#PTH_MRD='/home/debian/ProyectoBBB/shell_scripts/my_report_desc'
+PTH_MRD="$(pwd)"/shell_scripts/my_report_desc
 
 # Creacion directorio donde va el gadget/dispositivo
 mkdir $PTH
