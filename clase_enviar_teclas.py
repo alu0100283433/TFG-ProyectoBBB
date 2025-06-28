@@ -18,6 +18,7 @@
 import pdb
 import time
 
+"""
 from tablas_conversion import CODIGO_LCD_KEY_CODE1_1, \
                               CODIGO_LCD_KEY_CODE1_2, \
                               CODIGO_CAR_KEY_CODE1, \
@@ -29,6 +30,25 @@ from tablas_conversion import CODIGO_LCD_KEY_CODE1_1, \
                               CODIGO_CAR_KEY_CODE_LOGIN1, \
                               CODIGO_CAR_KEY_CODE_LOGIN2, \
                               CODIGO_CAR_KEY_CODE_LOGIN3, \
+                              K_SUELTA, K_CAPUCHO, K_LCTRL, K_LSHIFT, \
+                              K_LALT, K_LMETA, K_RCTRL, K_RSHIFT, \
+                              K_RALT, K_RMETA, K_F1, K_F2, K_F3, \
+                              K_F4, K_F5, K_F6, K_F7, K_F8, K_F9, K_F10, \
+                              K_F11, K_F12, K_ENTER, K_BCKSP, K_ESPERA2, \
+                              K_SPACE
+"""
+
+from tablas_conversion import CODIGO_LCD_KEY_CODE1_1, \
+                              CODIGO_LCD_KEY_CODE1_2, \
+                              CODIGO_CAR_KEY_CODE1, \
+                              CODIGO_CAR_KEY_CODE2, \
+                              CODIGO_KEY_CODE_COMANDOS2, \
+                              CODIGO_LCD_KEY_CODE_PSW1, \
+                              CODIGO_LCD_KEY_CODE_PSW2, \
+                              CODIGO_LCD_KEY_CODE_PSW3, \
+                              CODIGO_CAR_KEY_CODE_PSW1, \
+                              CODIGO_CAR_KEY_CODE_PSW2, \
+                              CODIGO_CAR_KEY_CODE_PSW3, \
                               K_SUELTA, K_CAPUCHO, K_LCTRL, K_LSHIFT, \
                               K_LALT, K_LMETA, K_RCTRL, K_RSHIFT, \
                               K_RALT, K_RMETA, K_F1, K_F2, K_F3, \
@@ -118,13 +138,16 @@ class Enviar_teclas():
             self.key_report = CODIGO_LCD_KEY_CODE1_2[posi]
         elif self.codigo_pantalla == (1,3,1): # Pantallas login
             posi = self.get_posicion_tabla_conversion()
-            self.key_report = CODIGO_LCD_KEY_CODE_LOGIN1[posi]
+            #self.key_report = CODIGO_LCD_KEY_CODE_LOGIN1[posi]
+            self.key_report = CODIGO_LCD_KEY_CODE_PSW1[posi]
         elif self.codigo_pantalla == (1,3,2):
             posi = self.get_posicion_tabla_conversion()
-            self.key_report = CODIGO_LCD_KEY_CODE_LOGIN2[posi]
+            #self.key_report = CODIGO_LCD_KEY_CODE_LOGIN2[posi]
+            self.key_report = CODIGO_LCD_KEY_CODE_PSW2[posi]
         elif self.codigo_pantalla == (1,3,3):
             posi = self.get_posicion_tabla_conversion()
-            self.key_report = CODIGO_LCD_KEY_CODE_LOGIN3[posi]
+            #self.key_report = CODIGO_LCD_KEY_CODE_LOGIN3[posi]
+            self.key_report = CODIGO_LCD_KEY_CODE_PSW3[posi]
         elif (self.codigo_pantalla[0] == 1) and (self.codigo_pantalla[1] == 2):
             self.key_report = self.obtener_key_code_caracter()
 
@@ -219,8 +242,10 @@ class Enviar_teclas():
 
 
             # 1ro: obtener posicion tablas conversion caracteres
-            for i in CODIGO_CAR_KEY_CODE_LOGIN1:
-                if (c == CODIGO_CAR_KEY_CODE_LOGIN1[contador]):
+            #for i in CODIGO_CAR_KEY_CODE_LOGIN1:
+            for i in CODIGO_CAR_KEY_CODE_PSW1:
+                #if (c == CODIGO_CAR_KEY_CODE_LOGIN1[contador]):
+                if (c == CODIGO_CAR_KEY_CODE_PSW1[contador]):
                     posicion_kc1 = contador
                     break
 
@@ -229,8 +254,10 @@ class Enviar_teclas():
             contador = 0
 
 
-            for i in CODIGO_CAR_KEY_CODE_LOGIN2:
-                if (c == CODIGO_CAR_KEY_CODE_LOGIN2[contador]):
+            #for i in CODIGO_CAR_KEY_CODE_LOGIN2:
+            for i in CODIGO_CAR_KEY_CODE_PSW2:
+                #if (c == CODIGO_CAR_KEY_CODE_LOGIN2[contador]):
+                if (c == CODIGO_CAR_KEY_CODE_PSW2[contador]):
                     posicion_kc2 = contador
                     break
 
@@ -239,8 +266,10 @@ class Enviar_teclas():
             contador = 0
 
 
-            for i in CODIGO_CAR_KEY_CODE_LOGIN3:
-                if (c == CODIGO_CAR_KEY_CODE_LOGIN3[contador]):
+            #for i in CODIGO_CAR_KEY_CODE_LOGIN3:
+            for i in CODIGO_CAR_KEY_CODE_PSW3:
+                #if (c == CODIGO_CAR_KEY_CODE_LOGIN3[contador]):
+                if (c == CODIGO_CAR_KEY_CODE_PSW3[contador]):
                     posicion_kc3 = contador
                     break
 
@@ -251,14 +280,18 @@ class Enviar_teclas():
 
             # 2do: Ir a la tabla de conversion de los key_codes y extraer el pedido.
             if posicion_kc1 != -1:
-                aux_KC =  CODIGO_LCD_KEY_CODE_LOGIN1[posicion_kc1]
+                #aux_KC =  CODIGO_LCD_KEY_CODE_LOGIN1[posicion_kc1]
+                aux_KC =  CODIGO_LCD_KEY_CODE_PSW1[posicion_kc1]
             elif posicion_kc2 != -1:
-                aux_KC = CODIGO_LCD_KEY_CODE_LOGIN2[posicion_kc2] 
+                #aux_KC = CODIGO_LCD_KEY_CODE_LOGIN2[posicion_kc2] 
+                aux_KC = CODIGO_LCD_KEY_CODE_PSW2[posicion_kc2] 
             elif posicion_kc3 != -1:
-                aux_KC = CODIGO_LCD_KEY_CODE_LOGIN3[posicion_kc3] 
+                #aux_KC = CODIGO_LCD_KEY_CODE_LOGIN3[posicion_kc3] 
+                aux_KC = CODIGO_LCD_KEY_CODE_PSW3[posicion_kc3] 
             else:
                 #aux_KC = CODIGO_LCD_KEY_CODE1_2[40] # Espacio
-                aux_KC =  CODIGO_LCD_KEY_CODE_LOGIN1[0] # Espacio
+                #aux_KC =  CODIGO_LCD_KEY_CODE_LOGIN1[0] # Espacio
+                aux_KC =  CODIGO_LCD_KEY_CODE_PSW1[0] # Espacio
 
             lista_KC.append(aux_KC)
 
