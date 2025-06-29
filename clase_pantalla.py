@@ -93,7 +93,6 @@ class Pantalla:
 
             self.pos_actual_cursor = 0
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Convierte el texto de una linea de pantalla en una serie de
     # caracteres ascii separados como una lista.
@@ -161,7 +160,6 @@ class Pantalla:
     
         return lista_caracteres
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Convierte los caracteres ascii de una linea en sus codigos
     # correspondientes para escribirse y mostrarse en el lcd.
@@ -180,14 +178,12 @@ class Pantalla:
 
         return pantalla_codigo_lcd
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def mostrar_pantalla_texto(self):
         print(self.linea1)
         print(self.linea2)
         print(self.linea3)
         print(self.linea4)
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def mostrar_pantalla_ascii(self):
@@ -196,7 +192,6 @@ class Pantalla:
         print(self.linea3_ascii)
         print(self.linea4_ascii)
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def mostrar_pantalla_lcd(self):
         print(self.linea1_lcd)
@@ -204,11 +199,9 @@ class Pantalla:
         print(self.linea3_lcd)
         print(self.linea4_lcd)
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_codigo(self,codigo):
         self.codigo = codigo
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_codigo(self):
@@ -216,11 +209,9 @@ class Pantalla:
 
         return codigo
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_nombre_codigo(self,nombre_codigo):
         self.nombe_codigo = nombre_codigo
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_nombre_codigo(self):
@@ -232,18 +223,15 @@ class Pantalla:
     def set_nombre_pantalla(self,nombre_pantalla):
         self.nombre_pantalla = nombre_pantalla
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_nombre_pantalla(self):
         nombre_pantalla = self.nombre_pantalla
 
         return nombre_pantalla
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_siguiente(self, pantalla_s):
         self.pantalla_siguiente = pantalla_s
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_siguiente(self):
@@ -251,11 +239,9 @@ class Pantalla:
 
         return pantalla_s
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_anterior(self, pantalla_a):
         self.pantalla_anterior = pantalla_a
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_anterior(self):
@@ -263,11 +249,9 @@ class Pantalla:
 
         return pantalla_a
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_nivel_anterior(self, pantalla_na):
         self.pantalla_nivel_anterior = pantalla_na
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_nivel_anterior(self):
@@ -275,11 +259,9 @@ class Pantalla:
 
         return pantalla_na
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_opcion1(self, pantalla_o1):
         self.pantalla_opcion1 = pantalla_o1
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_opcion1(self):
@@ -287,11 +269,9 @@ class Pantalla:
 
         return o1
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_opcion2(self, pantalla_o2):
         self.pantalla_opcion2 = pantalla_o2
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_opcion2(self):
@@ -299,11 +279,9 @@ class Pantalla:
 
         return o2
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_opcion3(self, pantalla_o3):
         self.pantalla_opcion3 = pantalla_o3
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_opcion3(self):
@@ -311,11 +289,9 @@ class Pantalla:
 
         return o3
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pantalla_opcion4(self, pantalla_o4):
         self.pantalla_opcion4 = pantalla_o4
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pantalla_opcion4(self):
@@ -323,11 +299,9 @@ class Pantalla:
 
         return o4
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pos_validas(self, pos_validas):
         self.pos_validas = pos_validas 
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pos_validas(self):
@@ -335,13 +309,11 @@ class Pantalla:
 
         return pos_validas
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea1_lcd(self):
         l1 = self.linea1_lcd
 
         return l1
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea2_lcd(self):
@@ -349,13 +321,11 @@ class Pantalla:
 
         return l2
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea3_lcd(self):
         l3 = self.linea3_lcd
 
         return l3
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea4_lcd(self):
@@ -363,11 +333,9 @@ class Pantalla:
 
         return l4
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_pos_actual_cursor(self, pac):
         self.pos_actual_cursor = pac
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_pos_actual_cursor(self):
@@ -375,16 +343,13 @@ class Pantalla:
 
         return pac
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_tipo(self, tipo):
         self.tipo = tipo
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_tipo(self):
         return self.tipo
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea1(self):
@@ -395,7 +360,6 @@ class Pantalla:
 
         return l1
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea2(self):
         if isinstance(self.linea2, str):
@@ -404,7 +368,6 @@ class Pantalla:
             l2 = self.linea2.copy()
 
         return l2
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea3(self):
@@ -415,7 +378,6 @@ class Pantalla:
 
         return l3
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_linea4(self):
         if isinstance(self.linea4, str):
@@ -424,7 +386,6 @@ class Pantalla:
             l4 = self.linea4.copy()
 
         return l4
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_linea1(self, linea1):
@@ -436,7 +397,6 @@ class Pantalla:
         self.linea1_ascii = self.conversor_texto_a_ascii(linea1)
         self.linea1_lcd = self.conversor_ascii_a_lcd(self.linea1_ascii)
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_linea2(self, linea2):
         self.linea2 = linea2
@@ -447,7 +407,6 @@ class Pantalla:
         self.linea2_ascii = self.conversor_texto_a_ascii(linea2)
         self.linea2_lcd = self.conversor_ascii_a_lcd(self.linea2_ascii)
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_linea3(self, linea3):
         self.linea3 = linea3
@@ -457,7 +416,6 @@ class Pantalla:
 
         self.linea3_ascii = self.conversor_texto_a_ascii(linea3)
         self.linea3_lcd = self.conversor_ascii_a_lcd(self.linea3_ascii)
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_linea4(self, linea4):

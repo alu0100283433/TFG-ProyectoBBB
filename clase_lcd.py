@@ -1,8 +1,15 @@
 
-
-#   Clase que gestiona las operaciones posibles sobre
-# un LCD con microcontrolador LCMI1602 usando conexionado
-# I2C.
+# ******************************************************************************
+# Nombre: clase_lcd.py
+#
+#   Descripcion: 
+#
+#   * Clase que gestiona las operaciones posibles sobre un LCD con 
+# microcontrolador LCMI1602 usando conexionado I2C.
+#
+#   Nota: Se obvian operaciones de lectura sobre éste ya que con el
+# microcontrolador soldado usado ésto no es posible.
+# ******************************************************************************
 
 
 import time
@@ -12,16 +19,17 @@ import pdb
 import smbus as smb
 
 
-# Nanosegundos, para las operaciones en 'escritura'
+# - Tiempos en nanosegundos
+#
+# Para las operaciones en 'escritura'
 tiempoBase = 0.000001 
-
-#   El tiempo de espera para 'Return home', que se ve en la pagina
-# 24 del Datasheet del HD44780
+# Tiempo de espera para 'Return home' (página 24 Datasheet del HD44780).
 esperCmds = 0.00152
 
+#.....................
 class Lcd:
-
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Constructor
     def __init__(self):
 
         self.bus = smb.SMBus(1)
@@ -69,7 +77,7 @@ class Lcd:
         self.escritura_modo4bits(0b0110_0000 | (1 << 3))
         time.sleep(esperCmds)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Para el modo 4bits. Instrucciones/comandos
     def dos_nibbles_instruccion(self, byte):
         # Instruccion: RS y R/W a 0. Dejando la retroiluminacion encendida.
@@ -81,7 +89,7 @@ class Lcd:
         self.escritura_modo4bits(n1)
         self.escritura_modo4bits(n2)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Para el modo 4bits. Operacion escritura caracter al LCD
     def dos_nibbles_escritura(self, byte):
         # Escritura: RS a 1, R/W a 0. Retro. a 1.
@@ -91,7 +99,7 @@ class Lcd:
         self.escritura_modo4bits(n1)
         self.escritura_modo4bits(n2)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Simulacion del ciclo de Escritura pag.58 datasheet HD44780
     # Obligatorio a simular de esta manera para escribir en el LCD.
     def escritura_modo4bits(self, contenido):
@@ -111,7 +119,7 @@ class Lcd:
         self.bus.write_byte(0x27, contenido & ~(1 << 2))
         time.sleep(tiempoBase * 10)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def modificar_BCD(self, b: int,  c: int, d: int):
         instruccion = 0b0000_1000
 
@@ -130,37 +138,39 @@ class Lcd:
 
         self.dos_nibbles_instruccion(instruccion)
 
-
-    def escribir_caracter(self, caracter): # Escribir caracter a LCD
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Escribir caracter a LCD
+    def escribir_caracter(self, caracter): 
         self.dos_nibbles_escritura(caracter)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def cursor_a_izda(self):
         instruccion = 0b0001_0000
 
         self.dos_nibbles_instruccion(instruccion)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def cursor_a_drca(self):
         instruccion = 0b0001_0100
 
         self.dos_nibbles_instruccion(instruccion)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def cursor_a(self, posicion: int):
         # Usa "Set DDRAM address"
         instruccion = 0b1000_0000 | posicion
 
         self.dos_nibbles_instruccion(instruccion)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def home(self):
         instruccion = 0b0000_0010
 
         self.dos_nibbles_instruccion(instruccion)
 
-
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def clear(self):
         instruccion = 0b0000_0001
 
         self.dos_nibbles_instruccion(instruccion)
+#.....................
