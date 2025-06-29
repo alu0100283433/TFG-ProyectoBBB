@@ -2,7 +2,7 @@
 # ******************************************************************************
 # Nombre: clase_lcd.py
 #
-#   Descripcion: 
+# Descripcion: 
 #
 #   * Clase que gestiona las operaciones posibles sobre un LCD con 
 # microcontrolador LCMI1602 usando conexionado I2C.
@@ -25,6 +25,7 @@ import smbus as smb
 tiempoBase = 0.000001 
 # Tiempo de espera para 'Return home' (página 24 Datasheet del HD44780).
 esperCmds = 0.00152
+
 
 #.....................
 class Lcd:

@@ -2,7 +2,7 @@
 # ******************************************************************************
 # Nombre: clase_gestor_pantallas.py
 #
-#   Descripcion: 
+# Descripcion: 
 #
 #       * Clase que gestiona todas las pantallas (objetos de esa clase). 
 # Carga las mismas y se encarga de rotar las pantallas cuando se eligen

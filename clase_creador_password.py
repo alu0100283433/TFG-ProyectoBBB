@@ -1,7 +1,8 @@
+#! /bin/bash
 
 # ******************************************************************************
 # Nombre: clase_creador_password.py
-
+#
 # Descripcion:
 #
 #   * Va guardando los caracteres que serán la contraseña a usar y tiene

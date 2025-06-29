@@ -2,13 +2,14 @@
 # ******************************************************************************
 # Nombre: clase_json_a_pantallas.py
 #
-#   Descripcion: 
+# Descripcion: 
 #
 #       * Abre y carga el fichero JSON con los datos de las pantallas,
 # convierte estos en objetos de tipo pantalla y los guarda en una lista
 # de las mismas para ser enviadas facilmente a otro sitios (otros objetos,
 # por ejemplo)
 # ******************************************************************************
+
 
 import pdb
 import json
@@ -54,7 +55,6 @@ class Json_a_pantallas:
         with open(fichero, 'r') as fj:
             self.lista_datos_json = json.load(fj)
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Ajusta el titulo de las pantallas principales para que ponga el
     # numero de pagina y las totales.
@@ -84,7 +84,6 @@ class Json_a_pantallas:
                     linea1 = linea1 + ' '
 
                 self.lista_datos_json[i]["linea1"] = linea1
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Guarda en una lista de objetos pantalla datos de cada pantalla del Json
@@ -117,7 +116,6 @@ class Json_a_pantallas:
             aux_p.set_pantalla_opcion4(tuple(json_p["opcion4_p"]))
 
             self.lista_pantallas.append(aux_p)
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def get_lista_pantallas(self):

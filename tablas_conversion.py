@@ -3,8 +3,7 @@
 
 # ******************************************************************************
 # Nombre: tablas_conversion.py
-
-
+#
 # Descripción.
 #
 #   * Uso de constantes y funciones. Su información guardada en tuplas como

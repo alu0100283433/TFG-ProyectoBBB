@@ -3,10 +3,11 @@
 
 # ******************************************************************************
 # Nombre: utilidades.py
-
-
-# Descripción: Agrupación de diversas funciones para su uso en la aplicación.
-
+#
+# Descripción: 
+#
+#   * Agrupación de diversas funciones para su uso en la aplicación.
+#
 # ******************************************************************************
 
 

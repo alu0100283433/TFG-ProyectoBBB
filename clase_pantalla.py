@@ -1,10 +1,9 @@
 
 # ******************************************************************************
 # Nombre: clase_pantalla.py
-
-
+#
 # Descripción:
-
+#
 # - Codigos para construir menus en el LCD.
 #
 #   * La clase Pantalla recibe los datos que conforman una pantalla en el LCD,
@@ -29,7 +28,6 @@ class Pantalla:
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Constructor
     def __init__(self, *args):
-
 
         if (len(args) == 0): # Cuando extraemos de JSON
             self.codigo = (0,0,0)

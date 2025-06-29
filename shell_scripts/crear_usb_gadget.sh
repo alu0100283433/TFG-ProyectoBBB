@@ -1,7 +1,10 @@
 #! /bin/bash
 
-# crear_usb_gadget.sh
-
+# ******************************************************************************
+# Nombre: crear_usb_gadget.sh
+#
+# Descripcion:
+#
 # 	* Script que configura la BeagleBone Black para que se 
 # comporte como un teclado USB al conectarse mediante ese cable
 # a un equipo host (un PC). 
@@ -10,19 +13,25 @@
 #
 #	https://www.kernel.org/doc/Documentation/usb/gadget_configfs.txt
 
-# =============================================================================
-# =============================================================================
+# 	Nota: Supuestamente el ".auto" era un sufijo de versiones antiguas del
+# kernel. Segun el enlace ...
+#
+# https://processors.wiki.ti.com/index.php/UsbgeneralpageLinuxCore
+#
+# 	Nota2: Se debe ejecutar el script en modo superusuario para su
+# funcionamiento correcto.
+# ******************************************************************************
+
 
 sleep 1 
 
 PTH='/sys/kernel/config/usb_gadget/BB_como_teclado_usb'
-#PTH_MRD='/home/debian/ProyectoBBB/shell_scripts/my_report_desc'
 PTH_MRD="$(pwd)"/shell_scripts/my_report_desc
 
 # Creacion directorio donde va el gadget/dispositivo
 mkdir $PTH
 
-# 	NOTA: Lo anterior crea toda la estructura de ficheros/directorios del
+# 	Nota: Lo anterior crea toda la estructura de ficheros/directorios del
 # gadget/dispositivo. Los 'atributos', que son los ficheros generados, tendran
 # contenido generico (ej.: idProduct tendra dentro "0x0000"). Faltara ademas
 # crear el contenido de los directorios "configs", "functions" y "strings"
@@ -32,7 +41,6 @@ echo 0xa4ac > $PTH/idVendor
 echo 0x0525 > $PTH/idProduct
 
 # Crear directorio para el idioma (0x409 : Ingles de EEUU)
-#mkdir $PATH/strings/0x409
 mkdir -p $PTH/strings/0x409
 
 # Crear 'atributos' (ficheros) siguientes en ../strings/0x409
@@ -53,10 +61,8 @@ echo 120 > $PTH/configs/conf.1/MaxPower
 
 # La parte de las funciones.
 
-# 	NOTA: El nombre del directorio de las funciones viene dado por el que
-# permita, entre otros, usar el 'report descriptor'. 'hid' nos permite eso
-# como atributo. Las fuentes encontradas fueron:
-
+# 	Nota: Nos basamos en las fuentes/documentación encontradas ...
+#
 # https://www.kernel.org/doc/Documentation/ABI/testing/configfs-usb-gadget-hid
 #
 # y
@@ -71,8 +77,8 @@ echo 120 > $PTH/configs/conf.1/MaxPower
 # parece estar disponible en el BB (aun asi el gadget en las pruebas funciona
 # aparentemente sin problemas)
 #	Tambien nos indican que el protocolo y la subclase es '1', el report_desc
-# es el que pondremos ahi a partir del fichero 'my_report_desc' del tutor y la
-# longitud del informe sera 8. 
+# es el que pondremos ahi a partir del fichero 'my_report_desc' y la longitud
+# informe sera 8. 
 
 mkdir -p $PTH/functions/hid.usb0
 
@@ -80,7 +86,6 @@ echo 1 > $PTH/functions/hid.usb0/protocol
 echo 1 > $PTH/functions/hid.usb0/subclass
 echo 8 > $PTH/functions/hid.usb0/report_length
 
-#cat ./my_report_desc > $PTH/functions/hid.usb0/report_desc
 cat $PTH_MRD > $PTH/functions/hid.usb0/report_desc
 
 # ------------------------------------------------------------------------------
@@ -97,7 +102,7 @@ ln -s $PTH/functions/hid.usb0 $PTH/configs/conf.1
 # disponibles se encuentran en /sys/class/udc. En el caso del BB el unico
 # disponible es "musb-hdrc.0" y usaremos ese.
 
-# 	NOTA !!!!!: 'g_multi' suele usar el mismo UDC (musb-hdrc.0) que vamos a usar
+# 	Nota: 'g_multi' suele usar el mismo UDC (musb-hdrc.0) que vamos a usar
 # nosotros en nuestro gadget. Si no ponemos el contenido de su fichero 'UDC'
 # vacio (/sys/kernel/config/usb_gadget/g_multi/UDC) no nos permitira llenar
 # el fichero 'UDC' de nuestro gadget con 'musb-hdrc.0'; nos lo bloqueara.
@@ -110,26 +115,3 @@ sleep 5
 
 chmod 777 /dev/hidg0
 
-#echo musb-hdrc.0.auto > $PTH/UDC 
-
-# 	NOTA: Supuestamente el ".auto" era un sufijo de versiones antiguas del
-# kernel. Segun el enlace ...
-#
-# https://processors.wiki.ti.com/index.php/UsbgeneralpageLinuxCore
-
-# 	NOTA2: Es adecuado ejecutar el script en modo superusuario ($ sudo su)
-
-# 	IMPORTANTE !!!!!: Suele ser adecuado hacer un reinicio (reboot) del BB
-# para que la nueva configuracion funcione correctamente.
-# 	FALSO: LO UNICO QUE HACE ESTO ES RESTABLECER A LA CONFIGURACION
-# ANTERIOR DE LA CREACION DE ESTE GADGET.
-
-# 	IMPORTANTE 2 !!!!!: El ultimo paso de modificacion hace que el puerto
-# USB del BB deje de funcionar para todo que no sea un teclado virtual. La
-# conexion ssh a traves del cable USB o que se comporte BB con el USB como un
-# sistema de almacenamiento dejara de estar disponible porque ya no se usa la
-# configuracion de 'g_multi' que daba esas caracteristicas a la conexion del
-# cable USB sino la de nuestro gadget. 
-# 	Antes de hacer los cambios de este fichero seria adecuado que
-# se configurara la conexion Ethernet fisica para que tenga una IP estatica
-# y conectarnos por ahi mediante ssh.

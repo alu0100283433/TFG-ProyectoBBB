@@ -2,11 +2,12 @@
 # ******************************************************************************
 # Nombre: creador_pantallas_ips.py
 #
-#   Descripcion: 
+# Descripcion: 
 #
 #       * Generador de pantallas con listas de IPs activas en el dispositivo.
 # Estas pantallas se formatearan para poder ser cargadas en el lcd.
 # ******************************************************************************
+
 
 import pdb
 import subprocess
