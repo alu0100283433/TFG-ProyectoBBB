@@ -43,7 +43,6 @@ from tablas_conversion import CODIGO_LCD_KEY_CODE1_1, \
 #.....................
 class Enviar_teclas():
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Constructor
     def __init__(self, c_p):
