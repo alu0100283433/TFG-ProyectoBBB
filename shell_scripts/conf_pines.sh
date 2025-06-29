@@ -1,24 +1,23 @@
 #!/bin/bash
 
-# conf_pines.sh
+# ******************************************************************************
+# Nombre: conf_pines.sh
+#
+# Descripcion:
+#
+# 	* Un script que configurar los pines como se necesitan para la
+# aplicación, los I2C para el LCD y los GPIO para los botones.
+#
+# 	* Esto es porque cada vez que se reinicia la BeagleBone, la
+# configuración se resetea a una por defecto distinta a la necesaria.
+# ******************************************************************************
 
-# 	Un script que vuelve a configurar los pines
-# a como los necesito.
 
-
-# Configuracion de P9_17 y P9_18 que cada vez que
-# apaga la placa pierde  su configuracion I2C.
+# Configuración de los pines I2C para el LCD
 # ..............................................................................
-# ..............................................................................
-
 config-pin p9.17 i2c
 config-pin p9.18 i2c
 
-
-
-# Configuracion de 6 botones fisicos
-# ..............................................................................
-# ..............................................................................
 
 # NOTA:
 #
@@ -32,13 +31,15 @@ config-pin p9.18 i2c
 #	Asi, el identificador/etiqueta de gpio66 es "P8_07"
 # y por tanto hay que escribir "p8.07" aqui abajo.
 
+
+# Configuracion de 6 botones fisicos que usan GPIO
+# ..............................................................................
 # B. Izquierdo
 echo in > /sys/class/gpio/gpio66/direction
 config-pin p8.07 gpio_pu
 # B. Derecho
 echo in > /sys/class/gpio/gpio67/direction
 config-pin p8.08 gpio_pu
-
 # B. Arriba
 echo in > /sys/class/gpio/gpio69/direction
 config-pin p8.09 gpio_pu

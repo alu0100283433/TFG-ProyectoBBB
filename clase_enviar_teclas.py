@@ -1,7 +1,7 @@
 
 # ******************************************************************************
 # Nombre: clase_enviar_teclas.py
-
+#
 # Descripcion:
 #
 #   * Recepcion de posiciones del teclado del lcd y envio de la
@@ -40,9 +40,10 @@ from tablas_conversion import CODIGO_LCD_KEY_CODE1_1, \
                               K_F11, K_F12, K_ENTER, K_BCKSP, K_ESPERA2, \
                               K_SPACE
 
+
+
 #.....................
 class Enviar_teclas():
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Constructor
     def __init__(self, c_p):
@@ -99,7 +100,6 @@ class Enviar_teclas():
         else:
             return CODIGO_LCD_KEY_CODE1_2[40] # Espacio
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Obtencion del key_code_report listo para escribirlo en un medio
     def conversion_posicion_key_code(self):
@@ -120,7 +120,6 @@ class Enviar_teclas():
             self.key_report = CODIGO_LCD_KEY_CODE_PSW3[posi]
         elif (self.codigo_pantalla[0] == 1) and (self.codigo_pantalla[1] == 2):
             self.key_report = self.obtener_key_code_caracter()
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Obtener el key_code y escribir a /dev/hidg0
@@ -170,7 +169,6 @@ class Enviar_teclas():
 
         return error
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Al simular secuencias de escape con '€' se deben asociar con el caracter
     # necesario (definidos en las tablas de conversion) que corresponderan a 
@@ -190,7 +188,6 @@ class Enviar_teclas():
             l_c_a.append(aux_caracter)
 
         return l_c_a.copy()
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Recorrer la lista de caracteres asociados y formar una lista con los
@@ -250,7 +247,6 @@ class Enviar_teclas():
 
         return lista_KC.copy()
 
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Recorrer la lista de caracteres asociados y formar una lista con los
     # KEY_CODES de cada caracter/caracteres de escape.
@@ -296,7 +292,6 @@ class Enviar_teclas():
 
         return lista_KC.copy()
             
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Como los key codes estan ya como strings, para sumar dos hay que hacer
     # varias operaciones intermedias (operaciones hechas en este metodo).
@@ -426,7 +421,6 @@ class Enviar_teclas():
                     error = True
 
         return error
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     #   Metodo que recibe y trata una linea de comandos que fueron extraidos

@@ -86,7 +86,6 @@ def sonar_A_buzzer3():
     GPIO.setup("P8_18", GPIO.OUT, GPIO.PUD_OFF, GPIO.HIGH)
     GPIO.setup("P8_18", GPIO.OUT, GPIO.PUD_OFF, GPIO.LOW)
 
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Hacer pitar el buzzer/zumbador/timbre. Tipo 3-2
 def sonar_A_buzzer3_2():

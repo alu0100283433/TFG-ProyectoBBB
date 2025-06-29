@@ -132,9 +132,7 @@ def ejecutar_accion(gp):
                 pantalla = gp.get_pantalla_actual()
                 imprimir_menu_en_lcd(pantalla, True)
             elif cod_pantalla[0] == 2:
-                # Pantalla usar password
-                # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+                # - Pantalla usar password
                 # Datos necesarios de pantalla actual de comandos.
                 cod_pant = cod_pantalla
                 pantalla = gp.get_pantalla_actual()
@@ -162,14 +160,11 @@ def ejecutar_accion(gp):
                     imprimir_menu_en_lcd(pantalla, True)
 
                     buzzers.sonar_S_buzzer3_3()
-                # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             elif cod_pantalla[0] == 1:
-                # Pantalla teclado
-                # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                # - Pantalla teclado
                 gp.entrar_subpantalla(1)
                 pantalla = gp.get_pantalla_actual()
                 imprimir_menu_en_lcd(pantalla, True)
-                # %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         elif (pos_actual == 38):
             if cod_pantalla[0] == 1: 
                 # Entrar pantalla comandos
@@ -374,6 +369,7 @@ pantalla_actual = gestor_pantallas.get_pantalla_actual()
 imprimir_menu_en_lcd(pantalla_actual, True)
 lcd.cursor_a(pantalla_actual.get_pos_actual_cursor())
 
+"""
 #   Uso de funciones de Adafruit para evitar casos donde
 # los botones físicos se queden bloqueados, emitiendo
 # continuamente una señal a la BBB. Con esto sólo se
@@ -384,9 +380,10 @@ lcd.cursor_a(pantalla_actual.get_pos_actual_cursor())
 # da la sensacion como si generara dicha pantalla dos veces.
 #   Una alternativa es crear una funcion callback y colocarla
 # su llamada como tercer argumento de GPIO.add_event_detect().
-# El problema resulta ser que la ejecucion del programa se
-# ralentiza demasiado, tanto, que se puede ver como se escribe
-# cada pantalla caracter a caracter.
+# Pero a su vez produce el problema de que la ejecucion del
+# programa se ralentiza demasiado, tanto, que se puede ver como
+# se escribe cada pantalla caracter a caracter.
+"""
 GPIO.add_event_detect("P8_7",  GPIO.FALLING)
 GPIO.add_event_detect("P8_8",  GPIO.FALLING)
 GPIO.add_event_detect("P8_9",  GPIO.FALLING)
