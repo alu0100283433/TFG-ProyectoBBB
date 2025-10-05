@@ -15,15 +15,20 @@
 
 ---
 
+
 ![Mandando abrir terminal](./imgs/VID_20250715_185456.gif)
 
 <i>Operación de apertura de la terminal desde la BeagleBone</i>
 
+
 ### | 1. Justificación del repositorio.
+
 
 En este repositorio se encuentra todo el código del proyecto. Un emulador de teclado USB basado en una BeagleBone Black. Se conectará a un PC host, permitiendo ejecutar comandos programados o actuar como un teclado.
 
+
 ### | 2. Elementos de hardware del proyecto.
+
 
 ![Conexionado del proyecto](./imgs/Esquema3_bb.png)
 
@@ -31,10 +36,11 @@ En este repositorio se encuentra todo el código del proyecto. Un emulador de te
 
 * Una BeagleBone Black.
 * Un LCD basado en HD44780 con controladora I2C.
-* Un adaptador de tensión 3,3V a 5V.
+* Un conversor de tensión 3,3V a 5V.
 * Seis botones físicos.
 * Un buzzer.
 * Cables y protoboards.
+
 
 ### | 3. Estructura del repositorio.
 
@@ -51,6 +57,10 @@ En este repositorio se encuentra todo el código del proyecto. Un emulador de te
 
 ![Cambiando el Kubuntu a modo texto](./imgs/VID_20250715_185316.gif)
 
+<<<<<<< HEAD
 
+<i>Operación de cambiar Kubuntu del modo gráfico al modo texto</i>
+>>>>>>> desarrollo
+=======
 <i>Operación de cambiar Kubuntu del modo gráfico al modo texto</i>
 >>>>>>> desarrollo
