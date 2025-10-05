@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# TFG-ProyectoBBB
-## Autor: Manuel Ramón Regalado Peraza
-## Correo: alu0100283433@ull.edu.es
-=======
 
 # TFG-ProyectoBBB
 
@@ -57,10 +52,4 @@ En este repositorio se encuentra todo el código del proyecto. Un emulador de te
 
 ![Cambiando el Kubuntu a modo texto](./imgs/VID_20250715_185316.gif)
 
-<<<<<<< HEAD
-
 <i>Operación de cambiar Kubuntu del modo gráfico al modo texto</i>
->>>>>>> desarrollo
-=======
-<i>Operación de cambiar Kubuntu del modo gráfico al modo texto</i>
->>>>>>> desarrollo
